@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import {useState} from 'react';
 import './App.css';
+import Axios from 'axios';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+
 
 function App() {
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  const[foodName, setFoodName] = useState('')
+  const[days, setDays] = useState(0)
+
+  const addToList=()=>{
+    console.log(foodName + days);
+    Axios.post("http://localhost:5001/insert",{foodName: foodName, days : days,})
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      
+      <h1>CRUD APP WITH MERN</h1>
+
+      <label>Food name</label>
+      <input type="text" onChange ={(event) => {setFoodName(event.target.value);
+      }}/>
+      <label>Days since you Ate It</label>
+      <input type="number" onChange ={(event) =>{setDays(event.target.value);
+      }}/>
+      <Button onClick={addToList} variant="contained">Add to list</Bnutton>
+        
+        
+            </div>
   );
 }
 
