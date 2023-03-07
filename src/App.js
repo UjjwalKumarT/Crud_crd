@@ -25,7 +25,7 @@ function App() {
       <label>Days since you Ate It</label>
       <input type="number" onChange ={(event) =>{setDays(event.target.value);
       }}/>
-      <Button onClick={addToList} variant="contained">Add to list</Bnutton>
+      <Button onClick={addToList} variant="contained">Add to list</Button>
         
         
             </div>
