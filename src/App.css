@@ -1,6 +1,11 @@
 .App {
   text-align: center;
+  background-color: cadetblue;
+  
 }
+/* *{
+  background-color:wheat;
+} */
 
 .App-logo {
   height: 40vmin;
