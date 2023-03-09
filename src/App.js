@@ -3,6 +3,7 @@ import './App.css';
 import Axios from 'axios';
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import NavBar from './components/NavBar';
 
 
 function App() {
@@ -24,11 +25,14 @@ function App() {
   const updateFood=(id)=>{
     Axios.put("http://localhost:5001/update",{id : id, newFoodName: newFoodName})
   }
+  const deleteFood = (id)=>{
+    Axios.delete(`http://localhost:5001/delete/${id}`)
+  }
   return (
     <div className="App">
-      
-      <h1>CRUD APP WITH MERN</h1>
 
+      <NavBar/>
+      <h1>CRUD APP WITH MERN</h1>
       <label>Food name</label>
       <input type="text" onChange ={(event) => {setFoodName(event.target.value);
       }}/>
@@ -39,12 +43,14 @@ function App() {
         
         <h1>FoodList</h1>
         {foodList.map((val,key)=>{
-          return (<div key={key} className="food"><h1>{val.foodName}</h1><h1>{val.daysSinceIAte}</h1>
+          return (
+          <div key={key} className="food"><h1>{val.foodName}</h1><h1>{val.daysSinceIAte}</h1>
+          
           <input type= "text" placeholder='new food name'onChange={(event)=>{
-            setDays(event.target.value);
+            setNewFoodName(event.target.value);
           }}/>
             <button onClick={()=>updateFood(val._id)}>update</button>
-            <button>delete</button>
+            <button onClick={()=>deleteFood(val._id)}>delete</button>
           </div>)
         }
 
